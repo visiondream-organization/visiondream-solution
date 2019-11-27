@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\projects",
+    "\\projects\\visiondream-site",
+    "\\projects\\visiondream-site\\src",
+    "\\projects\\visiondream-site\\src\\app",
+    "\\projects\\visiondream-site\\src\\app\\public",
+    "\\projects\\visiondream-site\\src\\app\\public\\pages",
+    "\\projects\\visiondream-site\\src\\app\\public\\pages\\errors",
+    "\\projects\\visiondream-site\\src\\app\\public\\pages\\errors\\not-found",
+    "\\projects\\visiondream-site\\src\\app\\shared"
+  ],
+  "SelectedNode": "\\projects\\visiondream-site\\src\\app\\shared\\styles\\visiondream-styles.scss",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,7 +1,14 @@
+/**
+ * @license
+ * Copyright VisionDream ICT Solutions 2019. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at http://visiondream.local/#/legal/terms
+ */
+
+import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
-import { MediaMatcher, BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { VDBuildVersionModel } from 'projects/visiondream-site/src/app/shared/models/vd-buildversion-model';
 import { NGXLogger } from 'ngx-logger';
 import { environment } from '../environments/environment';
 
@@ -28,6 +35,7 @@ import { environment } from '../environments/environment';
 //  updateMyLayoutForOrientationChange();
 //});
 
+/** @title Responsive sidenav app shell */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -36,32 +44,10 @@ import { environment } from '../environments/environment';
 export class AppComponent implements OnInit, OnDestroy {
 
   // Properties
-  VD_SiteAppName = 'VisionDream';
-  isOpened: true;
-  isFixed: false;
-  topGap: 60;
-  bottomGap: 60;
+  VDBuildVersionModel = new VDBuildVersionModel();
 
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
-
-  isHandset$: Observable<boolean> = this._breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-
-  isTablet$: Observable<boolean> = this._breakpointObserver.observe(Breakpoints.Tablet)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-
-  isWeb$: Observable<boolean> = this._breakpointObserver.observe(Breakpoints.Web)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
 
   navMenuFiller = [
     { route: 'home', tittle: 'VISIONDREAM' },
@@ -89,14 +75,13 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
-    private _breakpointObserver: BreakpointObserver,
     private _Logger: NGXLogger)
   {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
 
-    this._Logger.log(`[DEFAULT] - Application name is: ${this.VD_SiteAppName}`);
+    this._Logger.log(`[DEFAULT] - Application name is: ${this.VDBuildVersionModel.Title}`);
     //this._Logger.log(`[DEFAULT] - Application name is: ${this.appName}`);
     //this._Logger.log(`[DEFAULT] - Server secrete is: ${this.serverSecrete}`);
     //this._Logger.log(`[DEFAULT] - Server base api url is: ${this.serverApiUrl}`);

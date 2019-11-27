@@ -1,0 +1,21 @@
+$vd-action-padding: 10px !default;
+
+.vd-button-row button,
+.vd-button-row a {
+  margin-right: $vd-action-padding;
+}
+
+.vd-action-icon {
+  margin: 0 $vd-action-padding;
+  display: inline-block;
+}
+
+.vd-action-caption {
+  margin: $vd-action-padding 0;
+  display: inline-block;
+}
+
+.vd-action-group {
+  margin: 0 $vd-action-padding 0 $vd-action-padding;
+  display: inline-block;
+}

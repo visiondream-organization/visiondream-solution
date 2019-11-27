@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { VDBuildVersionModel } from 'projects/visiondream-site/src/app/shared/models/vd-buildversion-model';
 
 // Icons - Main Navigation
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -26,19 +27,17 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 export class TopNavComponent implements OnInit, OnDestroy {
 
   // Properties
-  VD_SiteAppName = 'VisionDream';
   @Output() public sidenavToggle = new EventEmitter();
-  isOpened: false;
+  VDBuildVersionModel: VDBuildVersionModel;
 
-  centered = true;
-  disabled = false;
-  unbounded = false;
-
-  radius: number;
-  color: string;
+  rippleCentered = false;
+  rippleDisabled = false;
+  rippleUnbounded = false;
+  rippleRadius: number;
+  rippleColor: string;
 
   mobileQuery: MediaQueryList;
-  private _mobileQueryListener: () => void;
+  private mobileQueryListener: () => void;
 
   // Icons - Main Navigation
   vdFaBars = faBars;
@@ -59,9 +58,11 @@ export class TopNavComponent implements OnInit, OnDestroy {
 
   // Constructor
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, ) {
+    this.VDBuildVersionModel = new VDBuildVersionModel();
+
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+    this.mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this.mobileQueryListener);
   }
 
   // Initialize
@@ -70,7 +71,7 @@ export class TopNavComponent implements OnInit, OnDestroy {
 
   // Destroy / Housekeeping
   ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
+    this.mobileQuery.removeListener(this.mobileQueryListener);
   }
 
   // Function Methods - onToggleSidenav function

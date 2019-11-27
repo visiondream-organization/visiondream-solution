@@ -1,14 +1,29 @@
-<mat-nav-list>
-  <mat-toolbar color="primary" class="vd-sidenav-toolbar vd-bg-very-light-gray-white">
+<mat-nav-list class="vd-sidenav">
+  <mat-toolbar color="primary" class="vd-sidenav-toolbar vd-bg-body">
     <mat-toolbar-row class="vd-sidenav-toolbar-row">
-      <a mat-list-item
+      <!--<a mat-list-item
          role="button"
          aria-label="VisionDream logo home side navigation link item"
          routerLink="/home"
          (click)="onSidenavClose()">
         <span class="vd-sidenav-title">
-          <img src="assets/vd/brand/logos/vd-logo-color.png"
-               height="32" alt="{{VD_SiteAppName}}">
+          <img src="assets/vd/brand/logo/vd-color-trans.png"
+               height="32" alt="{{VDBuildVersionModel.Title}}">
+        </span>
+      </a>-->
+      <a mat-list-item
+         role="button"
+         aria-label="About VisionDream side navigation link item"
+         routerLink="/about"
+         (click)="onSidenavClose()">
+        <span class="vd-sidenav-title">
+          <mat-icon aria-hidden="false" aria-label="About VisionDream side navigation link item icon">
+            <img src="assets/vd/brand/icon/vd-icon-color_46.png"
+                 height="32" alt="">
+          </mat-icon>
+        </span>
+        <span class="vd-sidenav-item">
+          About {{VDBuildVersionModel.Title}}
         </span>
       </a>
     </mat-toolbar-row>
@@ -17,8 +32,7 @@
       <a mat-list-item
          type="button"
          aria-label="Facebook side navigation link item"
-         href="https://web.facebook.com/VisionDreamICT/"
-         target="_blank" rel="noreferrer">
+         href="{{VDBuildVersionModel.VDUrlFacebook}}" target="_blank">
         <span class="vd-sidenav-icon-social">
           <mat-icon aria-hidden="false" aria-label="Facebook side navigation link item icon">
             <fa-icon [icon]="vdFaFacebook" class="vd-icon-20"></fa-icon>
@@ -28,8 +42,7 @@
       <a mat-list-item
          type="button"
          aria-label="Twitter side navigation link item"
-         href="https://twitter.com/VisionDreamICT"
-         target="_blank" rel="noreferrer">
+         href="{{VDBuildVersionModel.VDUrlTwitter}}" target="_blank">
         <span class="vd-sidenav-icon-social">
           <mat-icon aria-hidden="false" aria-label="Twitter side navigation link item icon">
             <fa-icon [icon]="vdFaTwitter" class="vd-icon-20"></fa-icon>
@@ -38,9 +51,18 @@
       </a>
       <a mat-list-item
          type="button"
+         aria-label="LinkedIn side navigation link item"
+         href="{{VDBuildVersionModel.VDUrlLinkedIn}}" target="_blank">
+        <span class="vd-sidenav-icon-social">
+          <mat-icon aria-hidden="false" aria-label="LinkedIn side navigation link item icon">
+            <fa-icon [icon]="vdFaLinkedin" class="vd-icon-20"></fa-icon>
+          </mat-icon>
+        </span>
+      </a>
+      <a mat-list-item
+         type="button"
          aria-label="GitHub side navigation link item"
-         href="https://github.com/visiondream-organization/visiondream-solution"
-         target="_blank" rel="noreferrer">
+         href="{{VDBuildVersionModel.VDUrlGitHub}}" target="_blank">
         <span class="vd-sidenav-icon-social">
           <mat-icon aria-hidden="false" aria-label="GitHub side navigation link item icon">
             <fa-icon [icon]="vdFaGithub" class="vd-icon-20"></fa-icon>
@@ -162,7 +184,7 @@
       Contact
     </span>
   </a>
-  <a mat-list-item
+  <!--<a mat-list-item
      role="button"
      aria-label="About side navigation link item"
      routerLink="/about"
@@ -175,7 +197,7 @@
     <span class="vd-sidenav-item">
       About
     </span>
-  </a>
+  </a>-->
   <a mat-list-item
      role="button"
      aria-label="Support side navigation link item"
@@ -220,3 +242,19 @@
   </a>
   <!--/. Sidenav menu -->
 </mat-nav-list>
+
+<!--<mat-list>
+  <h3 mat-subheader>Folders</h3>
+  <mat-list-item *ngFor="let folder of folders">
+    <mat-icon mat-list-icon>folder</mat-icon>
+    <h4 mat-line>{{folder.name}}</h4>
+    <p mat-line> {{folder.updated | date}} </p>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <h3 mat-subheader>Notes</h3>
+  <mat-list-item *ngFor="let note of notes">
+    <mat-icon mat-list-icon>note</mat-icon>
+    <h4 mat-line>{{note.name}}</h4>
+    <p mat-line> {{note.updated | date}} </p>
+  </mat-list-item>
+</mat-list>-->
